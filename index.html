@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+  <link rel="stylesheet" href="dist/css/main.min.css">
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <div class='container'>
+    <h1>Freewriting</h1>
+    <p>Konceptet er simpelt. Du træner din evne til at tænke og skrive frit, hvis du slet ikke må stoppe op og rette i
+      din tekst. Den teknik har Peter Elbow kaldt freewriting.</p>
+    <p>Du skal skrive uafbrudt i 10 minutter. Uafbrudt. Du stopper ikke for noget. Du skriver bare. Sletter ikke. Du
+      skal bare holde gang i tasterne.</p>
+    <p>Programmet her er designet, så det automatisk begynder at slette af din tekst, hvis du holder mere end 1 sekunds
+      pause.</p>
+  </div>
+  <div class='container' id='toolbar'>
+    <div id='timer'>10:00</div>
+    <button id='start'>Start timer</button>
+  </div>
+  <div class='container'>
+    <textarea id="textInput" class="textarea" contenteditable="true">Få fingrene i sving...</textarea>
+  </div>
+  <p>En masse obs og <em>to do</em></p>
+  <ul>
+    <li>Pointen er på sigt, at textarea lukker automatisk efter 10 minutter. Så kan du ikke skrive videre</li>
+    <li>Jeg regner med at disable folks backspace og deletetast. Kunne det ikke være fedt?</li>
+    <li>Jeg tænker at den færdige version starter timeren, når brugeren begynder at skrive. Måske med 10 sekunders
+      nedtælling.</li>
+    <li>En sjov gimmick kunne være at spørge om lov til at placere en cookie hos dem, der holder score med, hvor ofte
+      de øver sig. Peter Elbows forskning viser at du med 2-3 sessioner ugentlig får maksimal effekt.</li>
+  </ul>
+
+
+  <script src="dist/js/main.min.js"></script>
+</body>
+
+</html>
