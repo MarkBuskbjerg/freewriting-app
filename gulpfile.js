@@ -4,13 +4,13 @@
 
 var settings = {
   scripts: true, // Turn on/off script tasks
-  polyfills: true, // Turn on/off polyfill tasks
+  polyfills: false, // Turn on/off polyfill tasks
   styles: true, // Turn on/off style tasks
   svgs: false, // Turn on/off SVG tasks
-  static: true, // Turn on/off static file copying
+  static: false, // Turn on/off static file copying
   docs: false, // Turn on/off documentation generation
   deploy: false, // Turn on/off all deployment tasks
-  cacheBust: true // Turn on/off cache busting (adds a version number to minified files)
+  cacheBust: false // Turn on/off cache busting (adds a version number to minified files)
 };
 
 /**
