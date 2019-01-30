@@ -39,10 +39,10 @@ var freewriting = (function() {
   // Public APIs
   var publicAPIs = {};
 
-  publicAPIs.deleteText = function(text) {
-    var deleteText = text.split('');
-    deleteText.pop();
-    return deleteText.join('');
+  publicAPIs.deleteCharacter = function(text) {
+    var deleteCharacter = text.split('');
+    deleteCharacter.pop();
+    return deleteCharacter.join('');
   };
 
   publicAPIs.startTimer = function(duration, display) {
@@ -58,7 +58,7 @@ var freewriting = (function() {
       if (timer === 0) {
         var textContainer = document.getElementById('textInput');
         var placeholder = document.getElementById('placeholder');
-        var template = '<div class="tekstr-info-box"><p><strong>Godt arbejdet. Her er din tekst:</strong></p><p>' + textContainer.value + '</p></div>';
+        var template = '<div class="tekstr-info-box"><p><strong>Godt arbejdet. Her er din tekst:</strong></p><div>' + textContainer.value.replace(/\n\r?/g, '<br />') + '</div></div>';
         textContainer.style.display = 'none';
         placeholder.innerHTML = template;
       }
@@ -66,6 +66,13 @@ var freewriting = (function() {
         display.textContent = "00:00";
       }
     }, 1000);
+
+    publicAPIs.words = function(text) {
+      return text
+        .replace(/[-'.]/ig, '') // Ignores hyphens and apostrophes. Dots are here to avoid split on . in numbers.
+        .split(/[^a-zA-ZæøåÆØÅ0-9]/g) // Can't use \W+ since I need to take into account danish character ÆØÅ
+        .filter(Boolean);
+    };
   };
 
   publicAPIs.typeWatcher = function(textContainer, timer) {
@@ -77,10 +84,10 @@ var freewriting = (function() {
           // ... And nothing happens cause you're not rewarded for trying to edit the text
         } else {
           time = timer;
-        };
+        }
       });
       if (time <= 0) {
-        textContainer.value = publicAPIs.deleteText(content);
+        textContainer.value = publicAPIs.deleteCharacter(content);
       } else {
         time -= 500;
       }
@@ -114,7 +121,7 @@ var initiator = function(e) {
       if (e.which == 8 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 46) {
         event.preventDefault();   // turn off browser transition to the previous page
         // put here code you need
-      };
+      }
     };
   }
 };
