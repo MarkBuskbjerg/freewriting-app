@@ -58,9 +58,11 @@ var freewriting = (function() {
       if (timer === 0) {
         var textContainer = document.getElementById('textInput');
         var placeholder = document.getElementById('placeholder');
+        var wordCount = document.getElementById('wordCount');
         var template = '<div class="tekstr-info-box"><p><strong>Godt arbejdet. Her er din tekst:</strong></p><div>' + textContainer.value.replace(/\n\r?/g, '<br />') + '</div></div>';
         textContainer.style.display = 'none';
         placeholder.innerHTML = template;
+        wordCount.innerHTML = 'Du har skrevet: ' + publicAPIs.words(textContainer.value).length + ' ord';
       }
       if (--timer < 0) {
         display.textContent = "00:00";
@@ -98,7 +100,7 @@ var freewriting = (function() {
   return publicAPIs;
 })();
 
-var template = '<div class="freewriting-toolbar" id ="toolbar">' + 'Tid: <span id="timer">10:00</div>' + '</div>' + '<div class="freewriting-text-box">' + '<textarea id="textInput" rows="14" placeholder="Du starter programmet, når du skriver her.."></textarea>' + '<div id="placeholder"></div>' + '</div>';
+var template = '<div class="freewriting-toolbar" id ="toolbar">' + '<span id="toolbarWrapper">Tid: <span id="timer">10:00 </span><span id="wordCount" style="float: right;"></span></div>' + '</div>' + '<div class="freewriting-text-box">' + '<textarea id="textInput" rows="14" placeholder="Du starter programmet, når du skriver her.."></textarea>' + '<div id="placeholder"></div>' + '</div>';
 render(template, '#app');
 
 /*
@@ -111,7 +113,7 @@ var initiator = function(e) {
     // Make sure that the freewriting exercise is only handled once
     document.removeEventListener('keyup', initiator, false);
     // This is basically just settings for the timer. Could be fun to make this adjustable
-    var workPeriodInSeconds = 60 * 10;
+    var workPeriodInSeconds = 10;
 
     var textarea = document.getElementById('textInput');
     var display = document.getElementById('timer');
@@ -119,7 +121,7 @@ var initiator = function(e) {
     freewriting.typeWatcher(textarea, 2000);
     textarea.onkeydown = function(e) {
       if (e.which == 8 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 46) {
-        event.preventDefault();   // turn off browser transition to the previous page
+        event.preventDefault();   // turn off keydown default
         // put here code you need
       }
     };
