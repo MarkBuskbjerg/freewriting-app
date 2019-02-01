@@ -1,2 +1,2 @@
 /*! freewriting-app v0.0.1 | (c) 2019 Mark Buskbjerg | MIT License | http://github.com/MarkBuskbjerg/freewriting-app | Open Source Credits: http://comma-separated-list.com, http://of-oss-projects-used.com, http://for-this-project.com */
-.container{max-width:740px;margin:0 auto}.textarea{width:100%;height:300px}.freewriting-toolbar{width:100%;margin:20px 0 0;box-shadow:0 8px 20px rgba(0,0,0,.15);background-color:#ddd;padding:20px}
+.container{max-width:740px;margin:0 auto}.textarea{width:100%;height:300px}.freewriting-toolbar{width:100%;margin:20px 0 0;box-shadow:0 8px 20px rgba(0,0,0,.15);background-color:#ddd;padding:20px}#minusFive,#plusFive{background:#000;color:#fff;padding:7px;border-radius:50%;margin:5px;cursor:pointer}
