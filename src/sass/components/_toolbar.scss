@@ -7,10 +7,27 @@
 }
 
 #minusFive, #plusFive {
-    background: #000;
-    color: #fff;
     padding: 7px;
     border-radius: 50%;
     margin: 5px;
     cursor: pointer;
+}
+
+.button {
+    background-color: #cc3914;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 0;
+    color: #fff!important;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.612;
+    display: inline-block;
+    outline: none;
+    text-align: center;
+    padding: 14px 20px 12px;
+    text-decoration: none;
+    width: auto;
+    white-space: nowrap;
 }
