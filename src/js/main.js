@@ -100,6 +100,12 @@ var freewriting = (function() {
   return publicAPIs;
 })();
 
+// TODO: I really should split this up into more strings or something.
+//var toolbar = '<div class="freewriting-toolbar" id="toolbar"></div>';
+//var timer = 'Tid: <span id="timer">10:00 </span>';
+// var wordCounter = '<span id="wordCount" style="float: right;"></span>';
+// var textarea = '<textarea id="textInput" rows="14" placeholder="Du starter programmet, når du skriver her.."></textarea>';
+// var placeholder = '<div id="placeholder"></div>';
 var template = '<div class="freewriting-toolbar" id ="toolbar">' + '<span id="toolbarWrapper">Tid: <span id="timer">10:00 </span><span id="wordCount" style="float: right;"></span></div>' + '</div>' + '<div class="freewriting-text-box">' + '<textarea id="textInput" rows="14" placeholder="Du starter programmet, når du skriver her.."></textarea>' + '<div id="placeholder"></div>' + '</div>';
 render(template, '#app');
 
