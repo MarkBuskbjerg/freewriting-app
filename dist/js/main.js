@@ -121,7 +121,7 @@ var initiator = function(e) {
     // Make sure that the freewriting exercise is only handled once
     document.removeEventListener('keyup', initiator, false);
     // This is basically just settings for the timer. Could be fun to make this adjustable
-    var workPeriodInSeconds = 60 * 10;
+    var workPeriodInSeconds = 10;
 
     var textarea = document.getElementById('textInput');
     var display = document.getElementById('timer');
