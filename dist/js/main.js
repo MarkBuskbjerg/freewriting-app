@@ -1,5 +1,5 @@
 /*!
- * freewriting-app v0.0.1
+ * freewriting-app v1.0.0
  * A simple app to practice freewriting. Once you start typing, you don't stop. Otherwise the app starts deleting your text!
  * (c) 2019 Mark Buskbjerg
  * MIT License

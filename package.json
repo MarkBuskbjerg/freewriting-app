@@ -1,6 +1,6 @@
 {
     "name": "freewriting-app",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "A simple app to practice freewriting. Once you start typing, you don't stop. Otherwise the app starts deleting your text!",
     "author": {
         "name": "Mark Buskbjerg",
