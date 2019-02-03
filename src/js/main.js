@@ -34,7 +34,7 @@ var render = function(template, elem) {
 };
 
 /**
- * Render a template into the DOM
+ * Create the methods for the freewriting app and return as an API
  * @return {[object]}                   publicAPIs
  */
 
@@ -64,10 +64,10 @@ var freewriting = (function() {
         var textContainer = document.getElementById('textInput');
         var placeholder = document.getElementById('placeholder');
         var wordCount = document.getElementById('wordCount');
-        var template = '<div class="tekstr-info-box"><p><strong>Godt arbejdet. Her er din tekst:</strong></p><div>' + textContainer.value.replace(/\n\r?/g, '<br />') + '</div></div>';
+        var template = '<div class="tekstr-info-box"><p><strong>Great work. This is your text:</strong></p><div>' + textContainer.value.replace(/\n\r?/g, '<br />') + '</div></div>';
         textContainer.style.display = 'none';
         placeholder.innerHTML = template;
-        wordCount.innerHTML = 'Du har skrevet: ' + publicAPIs.words(textContainer.value).length + ' ord';
+        wordCount.innerHTML = 'You\'ve written: ' + publicAPIs.words(textContainer.value).length + ' words';
       }
       if (--timer < 0) {
         display.textContent = "00:00";
@@ -126,7 +126,7 @@ var initiator = function(e) {
     // Make sure that the freewriting exercise is only handled once
     document.removeEventListener('keyup', initiator, false);
     // This is basically just settings for the timer. Could be fun to make this adjustable
-    var workPeriodInSeconds = 10;
+    var workPeriodInSeconds = 60 * 10;
 
     var textarea = document.getElementById('textInput');
     var display = document.getElementById('timer');
@@ -137,6 +137,7 @@ var initiator = function(e) {
         event.preventDefault();   // turn off keydown default
         // put here code you need
       }
+      console.log(e.which);
     };
   }
 };
