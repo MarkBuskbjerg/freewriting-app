@@ -1,3 +1,11 @@
+/*!
+ * freewriting-app v0.0.1
+ * A simple app to practice freewriting. Once you start typing, you don't stop. Otherwise the app starts deleting your text!
+ * (c) 2019 Mark Buskbjerg
+ * MIT License
+ * http://github.com/MarkBuskbjerg/freewriting-app
+ */
+
 //
 // Helper Methods
 //
@@ -52,7 +60,7 @@ var freewriting = (function() {
 
   publicAPIs.startTimer = function(duration, display) {
     var timer = duration, minutes, seconds;
-    setInterval(function() {
+    setInterval((function() {
       minutes = parseInt(timer / 60, 10);
       seconds = parseInt(timer % 60, 10);
 
@@ -72,7 +80,7 @@ var freewriting = (function() {
       if (--timer < 0) {
         display.textContent = "00:00";
       }
-    }, 1000);
+    }), 1000);
 
     publicAPIs.words = function(text) {
       return text
@@ -84,21 +92,21 @@ var freewriting = (function() {
 
   publicAPIs.typeWatcher = function(textContainer, timer) {
     var time = timer;
-    setInterval(function() {
+    setInterval((function() {
       var content = textContainer.value;
-      textContainer.addEventListener('keydown', function(e) {
+      textContainer.addEventListener('keydown', (function(e) {
         if (e.which == 8 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 46) {
           // ... And nothing happens cause you're not rewarded for trying to edit the text
         } else {
           time = timer;
         }
-      });
+      }));
       if (time <= 0) {
         textContainer.value = publicAPIs.deleteCharacter(content);
       } else {
         time -= 500;
       }
-    }, 500);
+    }), 500);
   };
 
   // Return our public APIs
