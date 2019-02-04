@@ -1042,6 +1042,11 @@ input.btn {
   margin-right: 0;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 /**
  * @section Forms
  * Styling for form elements.
@@ -1335,13 +1340,49 @@ td {
   padding: 0.25em;
 }
 
+body {
+  -webkit-transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
 .freewriting-toolbar {
+  z-index: 1000;
   width: 100%;
   margin: 20px 0 0;
   -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   background-color: #ddd;
   padding: 20px;
+}
+
+.freewriting-toolbar .icon {
+  height: 22px;
+  margin-top: -4px;
+}
+
+.settings-toolbar {
+  -webkit-transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  z-index: 0;
+  height: 0%;
+  background-color: #0088cc;
+}
+
+.settings-toolbar .settings-item {
+  display: none;
+}
+
+.settings-open .settings-toolbar {
+  z-index: 9000;
+  height: 80%;
+}
+
+.settings-open .settings-toolbar .settings-item {
+  display: block;
 }
 
 /**

@@ -1,7 +1,36 @@
+body {
+    transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform-origin: left;
+}
+
 .freewriting-toolbar {
+    z-index: 1000;
     width: 100%;
     margin: 20px 0 0;
     box-shadow: 0 8px 20px rgba(0,0,0,.15);
     background-color: #ddd;
     padding: 20px;
+    .icon {
+        height: 22px;
+        margin-top: -4px;
+    }
+}
+
+.settings-toolbar {
+    transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform-origin: left;
+    z-index: 0;
+    height: 0%;
+    background-color: $color-primary;
+    .settings-item {
+        display: none;
+    }
+}
+
+.settings-open .settings-toolbar {
+    z-index: 9000;
+    height: 80%;
+    .settings-item {
+        display: block;
+    }
 }
