@@ -7,25 +7,24 @@
  * Base grid styles: single column
  */
 .container {
-	@extend .clearfix;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: $container-max-width;
-	width: $container-width;
+  @extend .clearfix;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $container-max-width;
+  width: $container-width;
 }
 
 .container-small {
-	max-width: 50em;
+  max-width: 40em;
 }
 
 .row {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin-left: $grid-margins * -1;
-	margin-right: $grid-margins * -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: $grid-margins * -1;
+  margin-right: $grid-margins * -1;
 }
-
 
 /**
  * Alignment
@@ -33,134 +32,132 @@
 
 /* Float content to the top */
 .row-top {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 /* Float content in the middle */
 .row-middle {
-	align-items: center;
+  align-items: center;
 }
 
 /* Push content to the bottom */
 .row-bottom {
-	align-items: flex-end;
+  align-items: flex-end;
 }
 
 /* Move content to the start of the row */
 .row-start {
-	justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 /* Float content in the center of the row */
 .row-center {
-	justify-content: center;
+  justify-content: center;
 }
 
 /* Move content to the end of the row */
 .row-end {
-	justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 /* Add even spacing around each item */
 .row-around {
-	justify-content: space-around;
+  justify-content: space-around;
 }
 
 /* Add even spacing between items */
 .row-between {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 /* Reverse content order */
 .row-reverse {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 %grid-base {
-	flex-basis: 100%;
-	margin-left: $grid-margins;
-	margin-right: $grid-margins;
+  flex-basis: 100%;
+  margin-left: $grid-margins;
+  margin-right: $grid-margins;
 }
 
 @each $grid, $width in ($grid-sizes) {
-	.grid-#{$grid} {
-		@extend %grid-base;
-	}
+  .grid-#{$grid} {
+    @extend %grid-base;
+  }
 }
 
 .grid-auto {
-	@extend %grid-base;
+  @extend %grid-base;
 }
-
 
 /**
  * Add columns to grid on bigger screens
  */
-@each $breakpoint, $prefix, $offset in ($grid-breakpoints){
-	@media (min-width: $breakpoint) {
-		.row#{$prefix}  {
-			flex-wrap: nowrap;
-		}
+@each $breakpoint, $prefix, $offset in ($grid-breakpoints) {
+  @media (min-width: $breakpoint) {
+    .row#{$prefix} {
+      flex-wrap: nowrap;
+    }
 
-		@if $grid-wrap {
+    @if $grid-wrap {
+      .row-wrap#{$prefix} {
+        flex-wrap: wrap;
 
-			.row-wrap#{$prefix} {
-				flex-wrap: wrap;
+        @each $grid, $width in ($grid-sizes) {
+          %grid-with-padding {
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: $grid-margins;
+            padding-right: $grid-margins;
+          }
 
-				@each $grid, $width in ($grid-sizes) {
-					%grid-with-padding {
-						margin-left: 0;
-						margin-right: 0;
-						padding-left: $grid-margins;
-						padding-right: $grid-margins;
-					}
+          .grid-#{$grid} {
+            // @extend %grid-with-padding;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: $grid-margins;
+            padding-right: $grid-margins;
+          }
+        }
 
-					.grid-#{$grid} {
-						// @extend %grid-with-padding;
-						margin-left: 0;
-						margin-right: 0;
-						padding-left: $grid-margins;
-						padding-right: $grid-margins;
-					}
-				}
+        .grid-auto {
+          // @extend %grid-with-padding;
+          margin-left: 0;
+          margin-right: 0;
+          padding-left: $grid-margins;
+          padding-right: $grid-margins;
+        }
+      }
+    }
 
-				.grid-auto {
-					// @extend %grid-with-padding;
-					margin-left: 0;
-					margin-right: 0;
-					padding-left: $grid-margins;
-					padding-right: $grid-margins;
-				}
-			}
-		}
+    #{$prefix} .grid-auto {
+      flex-basis: auto;
+      flex-grow: 1;
+    }
 
-		#{$prefix} .grid-auto {
-			flex-basis: auto;
-			flex-grow: 1;
-		}
+    @each $grid, $width in ($grid-sizes) {
+      #{$prefix} .grid-#{$grid} {
+        flex-basis: $width;
+        max-width: $width;
+      }
+    }
+    @if $offset {
+      @each $grid, $width in ($grid-sizes) {
+        #{$prefix} .offset-#{$grid} {
+          margin-left: $width;
+        }
+      }
+    }
 
-		@each $grid, $width in ($grid-sizes) {
-			#{$prefix} .grid-#{$grid} {
-				flex-basis: $width;
-				max-width: $width;
-			}
-		}
-		@if $offset {
-			@each $grid, $width in ($grid-sizes) {
-				#{$prefix} .offset-#{$grid} {
-					margin-left: $width;
-				}
-			}
-		}
+    #{$prefix} .grid-first {
+      -webkit-box-ordinal-group: 0;
+      order: -1;
+    }
 
-		#{$prefix} .grid-first {
-			-webkit-box-ordinal-group: 0;
-			order: -1;
-		}
-
-		#{$prefix} .grid-last {
-			-webkit-box-ordinal-group: 2;
-			order: 1;
-		}
-	}
+    #{$prefix} .grid-last {
+      -webkit-box-ordinal-group: 2;
+      order: 1;
+    }
+  }
 }

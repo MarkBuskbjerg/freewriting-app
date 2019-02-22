@@ -4,21 +4,20 @@
  */
 
 body {
-	background: $color-white;
-	color: $color-black;
-	font-family: $font-primary;
-	font-size: $font-size;
-	line-height: 1.5;
+  background: $color-white;
+  color: $color-black;
+  font-family: $font-primary;
+  font-size: $font-size;
+  line-height: 1.5;
 
-	@media (min-width: $bp-medium) {
-		line-height: 1.5625;
-	}
+  @media (min-width: $bp-medium) {
+    line-height: 1.5625;
+  }
 }
 
 p {
-	margin: 0 0 $spacing;
+  margin: 0 0 $spacing;
 }
-
 
 /**
  * Hyperlink styling
@@ -27,47 +26,45 @@ p {
  */
 
 a {
-	background-color: transparent; /* 1 */
-	color: $color-primary;
-	text-decoration: none;
-	text-decoration-skip: objects; /* 2 */
-	word-wrap: break-word;
+  background-color: transparent; /* 1 */
+  color: $color-primary;
+  text-decoration: none;
+  text-decoration-skip: objects; /* 2 */
+  word-wrap: break-word;
 
-	/**
+  /**
 	 * Improve readability when focused and also mouse hovered in all browsers.
 	 */
-	&:active,
-	&:hover {
-		outline: 0;
-	}
+  &:active,
+  &:hover {
+    outline: 0;
+  }
 
-	&:active,
-	&:focus,
-	&:hover {
-		color: darken( $color-primary, 15% );
-		text-decoration: underline;
-	}
+  &:active,
+  &:focus,
+  &:hover {
+    color: darken($color-primary, 15%);
+    text-decoration: underline;
+  }
 }
-
 
 /**
  * Creates block-level links
  */
 
 a.link-block {
-	color: $color-black;
-	display: block;
-	text-decoration: none;
+  color: $color-black;
+  display: block;
+  text-decoration: none;
 }
 
 .link-block-styled {
-	@extend a;
+  @extend a;
 
-	.link-block:hover & {
-		@extend a:hover;
-	}
+  .link-block:hover & {
+    @extend a:hover;
+  }
 }
-
 
 /**
  * List styling
@@ -75,29 +72,29 @@ a.link-block {
 
 ul,
 ol {
-	margin: 0 0 $spacing 2em;
-	padding: 0;
+  margin: 0 0 $spacing 2em;
+  padding: 0;
 }
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 dl,
 dd {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 dd {
-	margin-bottom: $spacing;
+  margin-bottom: $spacing;
 }
 
 dt {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /**
@@ -106,12 +103,12 @@ dt {
  * 2. Make sure it doesn't mess up the DOM flow
  */
 %list-style-none {
-	list-style: none;
+  list-style: none;
 
-	& > li:before {
-		content: "\200B"; /* 1 */
-		position: absolute; /* 2 */
-	}
+  & > li:before {
+    content: '\200B'; /* 1 */
+    position: absolute; /* 2 */
+  }
 }
 
 /**
@@ -119,8 +116,8 @@ dt {
  * For semantic reasons, should only be used on unordered lists.
  */
 .list-unstyled {
-	@extend %list-style-none;
-	margin-left: 0;
+  @extend %list-style-none;
+  margin-left: 0;
 }
 
 /**
@@ -128,62 +125,69 @@ dt {
  */
 
 .list-inline {
-	@extend %list-style-none;
-	margin-left: -0.5em;
-	margin-right: -0.5em;
-	padding: 0;
+  @extend %list-style-none;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+  padding: 0;
 }
 
 .list-inline > li {
-	display: inline-block;
-	margin-left: 0.5em;
-	margin-right: 0.5em;
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
-
 
 /**
  * Heading styling for h1 through h6 elements.
  * Heading class lets you use one heading type for semantics, but style it as another heading type.
  */
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: normal;
-	line-height: 1.2;
-	margin: 0 0 1em;
-	padding: 1em 0 0;
-	word-wrap: break-word;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 0 0 1em;
+  padding: 1em 0 0;
+  word-wrap: break-word;
 }
 
 h1,
 .h1 {
-	font-size: 1.5em;
-	padding-top: .5em;
+  font-size: 1.5em;
+  padding-top: 0.5em;
 
-	@media (min-width: $bp-medium) {
-		font-size: 1.75em;
-	}
+  @media (min-width: $bp-medium) {
+    font-size: 1.75em;
+  }
 }
 
 h2,
 .h2 {
-	font-size: 1.3125em;
+  font-size: 1.3125em;
 }
 
 h3,
 .h3 {
-	font-size: 1.1875em;
+  font-size: 1.1875em;
 }
 
-h4, h5, h6,
-.h4, .h5, .h6 {
-	font-size: 1em;
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+  font-size: 1em;
 }
 
 h4,
 .h4 {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
-
 
 /**
  * Lines, Quotes and Emphasis
@@ -194,12 +198,12 @@ h4,
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-	border: 0;
-	border-top: 1px solid $color-gray-light;
-	border-bottom: 0 solid transparent;
-	box-sizing: content-box; /* 1 */
-	margin: 2em auto;
-	overflow: visible; /* 2 */
+  border: 0;
+  border-top: 1px solid $color-gray-light;
+  border-bottom: 0 solid transparent;
+  box-sizing: content-box; /* 1 */
+  margin: 2em auto;
+  overflow: visible; /* 2 */
 }
 
 /**
@@ -207,7 +211,7 @@ hr {
  */
 b,
 strong {
-	font-weight: inherit;
+  font-weight: inherit;
 }
 
 /**
@@ -215,7 +219,7 @@ strong {
  */
 b,
 strong {
-	font-weight: bolder;
+  font-weight: bolder;
 }
 
 /**
@@ -223,31 +227,31 @@ strong {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
-	border-bottom: none; /* 1 */
-	text-decoration: underline; /* 2 */
-	text-decoration: underline dotted; /* 2 */
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
  * Address styling not present in Safari and Chrome.
  */
 dfn {
-	font-style: italic;
+  font-style: italic;
 }
 
 /**
  * Address styling not present in IE 8/9.
  */
 mark {
-	background: #fbf9c9;
-	color: $color-black;
+  background: #fbf9c9;
+  color: $color-black;
 }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
 small {
-	font-size: 80%;
+  font-size: 80%;
 }
 
 /**
@@ -255,47 +259,46 @@ small {
  */
 sub,
 sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sup {
-	top: -0.5em;
+  top: -0.5em;
 }
 
 sub {
-	bottom: -0.25em;
+  bottom: -0.25em;
 }
-
 
 /**
  * Blockquotes
  */
 
 blockquote {
-	font-size: 1.1875em;
-	font-style: italic;
-	margin: 0 0 $spacing;
-	padding-left: 0.8421052632em;
-	padding-right: 0.8421052632em;
+  font-size: 1.1875em;
+  font-style: italic;
+  margin: 0 0 $spacing;
+  padding-left: 0.8421052632em;
+  padding-right: 0.8421052632em;
 
-	cite {
-		color: $color-gray-dark;
-		font-size: 0.8421052632em;
-		padding-top: 1em;
-	}
+  cite {
+    color: $color-gray-dark;
+    font-size: 0.8421052632em;
+    padding-top: 1em;
+  }
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
+  content: '';
 }

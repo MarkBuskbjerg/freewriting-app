@@ -14,10 +14,12 @@ var render = function(template, elem) {
   }
   // If elem is an element, use it.
   // If it's a selector, get it.
+  console.log(elem);
   elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
   if (!elem) return;
   // Get the template
-  template = (typeof template === 'function' ? template(template.state) : template);
+  template =
+    typeof template === 'function' ? template(template.state) : template;
   if (typeof template !== 'string') return;
   // Render the template into the element
   if (elem.innerHTML === template) return;
@@ -25,11 +27,12 @@ var render = function(template, elem) {
   // Dispatch a render event
   if (typeof window.CustomEvent === 'function') {
     var event = new CustomEvent('render', {
-      bubbles: true
+      bubbles: true,
     });
     elem.dispatchEvent(event);
   }
   // Return the elem for use elsewhere
+  console.log(elem);
   return elem;
 };
 
@@ -51,32 +54,40 @@ var freewriting = (function() {
   };
 
   publicAPIs.startTimer = function(duration, display) {
-    var timer = duration, minutes, seconds;
+    var timer = duration,
+      minutes,
+      seconds;
     setInterval(function() {
       minutes = parseInt(timer / 60, 10);
       seconds = parseInt(timer % 60, 10);
 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
 
-      display.textContent = minutes + ":" + seconds;
+      display.textContent = minutes + ':' + seconds;
       if (timer === 0) {
         var textContainer = document.getElementById('textInput');
         var placeholder = document.getElementById('placeholder');
         var wordCount = document.getElementById('wordCount');
-        var template = '<div class="tekstr-info-box"><p><strong>Great work. This is your text:</strong></p><div>' + textContainer.value.replace(/\n\r?/g, '<br />') + '</div></div>';
+        var template =
+          '<div class="tekstr-info-box"><p><strong>Great work. This is your text:</strong></p><div>' +
+          textContainer.value.replace(/\n\r?/g, '<br />') +
+          '</div></div>';
         textContainer.style.display = 'none';
         placeholder.innerHTML = template;
-        wordCount.innerHTML = 'You\'ve written: ' + publicAPIs.words(textContainer.value).length + ' words';
+        wordCount.innerHTML =
+          "You've written: " +
+          publicAPIs.words(textContainer.value).length +
+          ' words';
       }
       if (--timer < 0) {
-        display.textContent = "00:00";
+        display.textContent = '00:00';
       }
     }, 1000);
 
     publicAPIs.words = function(text) {
       return text
-        .replace(/[-'.]/ig, '') // Ignores hyphens and apostrophes. Dots are here to avoid split on . in numbers.
+        .replace(/[-'.]/gi, '') // Ignores hyphens and apostrophes. Dots are here to avoid split on . in numbers.
         .split(/[^a-zA-ZæøåÆØÅ0-9]/g) // Can't use \W+ since I need to take into account danish character ÆØÅ
         .filter(Boolean);
     };
@@ -87,7 +98,14 @@ var freewriting = (function() {
     setInterval(function() {
       var content = textContainer.value;
       textContainer.addEventListener('keydown', function(e) {
-        if (e.which == 8 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 46) {
+        if (
+          e.which == 8 ||
+          e.which == 37 ||
+          e.which == 38 ||
+          e.which == 39 ||
+          e.which == 40 ||
+          e.which == 46
+        ) {
           // ... And nothing happens cause you're not rewarded for trying to edit the text
         } else {
           time = timer;
@@ -106,13 +124,15 @@ var freewriting = (function() {
 })();
 
 var template =
-  '<div class="freewriting-toolbar" id ="toolbar">' +
-  '<span id="toolbarWrapper">Tid: <span id="timer">10:00 </span>' +
+  '<div class="freewriting-app">' +
+  '<div class="freewriting-toolbar" id="toolbar">' +
+  '<div id="toolbarWrapper" class="container container-small">Tid: <span id="timer">10:00 </span>' +
   '<span id="wordCount" style="float: right;"></span></div>' +
   '</div>' +
-  '<div class="freewriting-text-box">' +
+  '<div class="freewriting-text-box container container-small">' +
   '<textarea id="textInput" rows="14" placeholder="The counter fires off once you start typing.."></textarea>' +
   '<div id="placeholder"></div>' +
+  '</div>' +
   '</div>';
 
 render(template, '#app');
@@ -133,11 +153,17 @@ var initiator = function(e) {
     freewriting.startTimer(workPeriodInSeconds, display);
     freewriting.typeWatcher(textarea, 2000);
     textarea.onkeydown = function(e) {
-      if (e.which == 8 || e.which == 37 || e.which == 38 || e.which == 39 || e.which == 40 || e.which == 46) {
-        event.preventDefault();   // turn off keydown default
-        // put here code you need
-      }
       console.log(e.which);
+      if (
+        e.keyCode == 8 ||
+        e.keyCode == 37 ||
+        e.keyCode == 38 ||
+        e.keyCode == 39 ||
+        e.keyCode == 40 ||
+        e.keyCode == 46
+      ) {
+        e.preventDefault(); // turn off keydown default event
+      }
     };
   }
 };
