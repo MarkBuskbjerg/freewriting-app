@@ -14,7 +14,6 @@ var render = function(template, elem) {
   }
   // If elem is an element, use it.
   // If it's a selector, get it.
-  console.log(elem);
   elem = typeof elem === 'string' ? document.querySelector(elem) : elem;
   if (!elem) return;
   // Get the template
@@ -32,7 +31,6 @@ var render = function(template, elem) {
     elem.dispatchEvent(event);
   }
   // Return the elem for use elsewhere
-  console.log(elem);
   return elem;
 };
 
@@ -70,15 +68,15 @@ var freewriting = (function() {
         var placeholder = document.getElementById('placeholder');
         var wordCount = document.getElementById('wordCount');
         var template =
-          '<div class="tekstr-info-box"><p><strong>Great work. This is your text:</strong></p><div>' +
+          '<div class="tekstr-info-box margin-top"><p><strong>Stærkt arbejde 💥<br/> Her er din tekst:</strong></p><div>' +
           textContainer.value.replace(/\n\r?/g, '<br />') +
           '</div></div>';
         textContainer.style.display = 'none';
         placeholder.innerHTML = template;
         wordCount.innerHTML =
-          "You've written: " +
+          "<strong>Det er ik' så vigtigt, men du har skrevet " +
           publicAPIs.words(textContainer.value).length +
-          ' words';
+          ' ord</strong>';
       }
       if (--timer < 0) {
         display.textContent = '00:00';
@@ -99,12 +97,15 @@ var freewriting = (function() {
       var content = textContainer.value;
       textContainer.addEventListener('keydown', function(e) {
         if (
-          e.which == 8 ||
-          e.which == 37 ||
-          e.which == 38 ||
-          e.which == 39 ||
-          e.which == 40 ||
-          e.which == 46
+          e.keyCode == 8 ||
+          e.keyCode == 37 ||
+          e.keyCode == 38 ||
+          e.keyCode == 39 ||
+          e.keyCode == 40 ||
+          e.keyCode == 46 ||
+          (e.ctrlKey && e.keyCode === 65) ||
+          (e.ctrlKey && e.keyCode === 88) ||
+          (e.ctrlKey && e.keyCode === 67)
         ) {
           // ... And nothing happens cause you're not rewarded for trying to edit the text
         } else {
@@ -125,12 +126,12 @@ var freewriting = (function() {
 
 var template =
   '<div class="freewriting-app">' +
-  '<div class="freewriting-toolbar" id="toolbar">' +
-  '<div id="toolbarWrapper" class="container container-small">Tid: <span id="timer">10:00 </span>' +
-  '<span id="wordCount" style="float: right;"></span></div>' +
-  '</div>' +
+  '<header class="freewriting-toolbar" id="toolbar">' +
+  '<div id="toolbarWrapper" class="container container-small text-center"><h4><strong>Tid<br/><span id="timer">10:00 </span></strong></h4>' +
+  '<div id="wordCount" class="margin-bottom"><strong></strong></div></div>' +
+  '</header>' +
   '<div class="freewriting-text-box container container-small">' +
-  '<textarea id="textInput" rows="14" placeholder="The counter fires off once you start typing.."></textarea>' +
+  '<textarea autofocus id="textInput" rows="14" placeholder="Nedtællingen starter, når du begynder at skrive.."></textarea>' +
   '<div id="placeholder"></div>' +
   '</div>' +
   '</div>';
@@ -145,6 +146,7 @@ var initiator = function(e) {
   if (e.target.id === 'textInput') {
     // Make sure that the freewriting exercise is only handled once
     document.removeEventListener('keyup', initiator, false);
+
     // This is basically just settings for the timer. Could be fun to make this adjustable
     var workPeriodInSeconds = 60 * 10;
 
@@ -152,15 +154,20 @@ var initiator = function(e) {
     var display = document.getElementById('timer');
     freewriting.startTimer(workPeriodInSeconds, display);
     freewriting.typeWatcher(textarea, 2000);
+
+    // Just make sure, that script doesn't trigger on these keys
     textarea.onkeydown = function(e) {
-      console.log(e.which);
       if (
         e.keyCode == 8 ||
         e.keyCode == 37 ||
         e.keyCode == 38 ||
         e.keyCode == 39 ||
         e.keyCode == 40 ||
-        e.keyCode == 46
+        e.keyCode == 46 ||
+        (e.ctrlKey && e.keyCode === 65) ||
+        (e.ctrlKey && e.keyCode === 88) ||
+        (e.ctrlKey && e.keyCode === 83) ||
+        (e.ctrlKey && e.keyCode === 67)
       ) {
         e.preventDefault(); // turn off keydown default event
       }

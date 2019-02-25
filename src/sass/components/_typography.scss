@@ -165,25 +165,6 @@ h1,
   }
 }
 
-h2,
-.h2 {
-  font-size: 1.3125em;
-}
-
-h3,
-.h3 {
-  font-size: 1.1875em;
-}
-
-h4,
-h5,
-h6,
-.h4,
-.h5,
-.h6 {
-  font-size: 1em;
-}
-
 h4,
 .h4 {
   text-transform: uppercase;
@@ -193,112 +174,10 @@ h4,
  * Lines, Quotes and Emphasis
  */
 
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  border: 0;
-  border-top: 1px solid $color-gray-light;
-  border-bottom: 0 solid transparent;
-  box-sizing: content-box; /* 1 */
-  margin: 2em auto;
-  overflow: visible; /* 2 */
-}
-
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-b,
 strong {
   font-weight: inherit;
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
 strong {
   font-weight: bolder;
-}
-
-/**
- * 1. Remove the bottom border in Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
- * Address styling not present in Safari and Chrome.
- */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-mark {
-  background: #fbf9c9;
-  color: $color-black;
-}
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-/**
- * Blockquotes
- */
-
-blockquote {
-  font-size: 1.1875em;
-  font-style: italic;
-  margin: 0 0 $spacing;
-  padding-left: 0.8421052632em;
-  padding-right: 0.8421052632em;
-
-  cite {
-    color: $color-gray-dark;
-    font-size: 0.8421052632em;
-    padding-top: 1em;
-  }
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
 }
