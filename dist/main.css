@@ -186,7 +186,7 @@ figure {
 }
 
 .container-small {
-  max-width: 50em;
+  max-width: 40em;
 }
 
 .row {
@@ -604,7 +604,7 @@ figure {
 body {
   background: #ffffff;
   color: #272727;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 100%;
   line-height: 1.5;
 }
@@ -627,7 +627,7 @@ p {
 a, .link-block-styled {
   background-color: transparent;
   /* 1 */
-  color: #0088cc;
+  color: #a53737;
   text-decoration: none;
   -webkit-text-decoration-skip: objects;
           text-decoration-skip: objects;
@@ -643,7 +643,7 @@ a:active, .link-block-styled:active, a:hover, .link-block-styled:hover, .link-bl
 }
 
 a:active, .link-block-styled:active, a:focus, .link-block-styled:focus, a:hover, .link-block-styled:hover, .link-block:hover .link-block-styled {
-  color: #005580;
+  color: #6c2424;
   text-decoration: underline;
 }
 
@@ -696,7 +696,7 @@ dt {
 }
 
 .list-unstyled > li:before, .list-inline > li:before {
-  content: "\200B";
+  content: '\200B';
   /* 1 */
   position: absolute;
   /* 2 */
@@ -729,7 +729,12 @@ dt {
  * Heading styling for h1 through h6 elements.
  * Heading class lets you use one heading type for semantics, but style it as another heading type.
  */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
   line-height: 1.2;
   margin: 0 0 1em;
@@ -740,7 +745,7 @@ h1, h2, h3, h4, h5, h6 {
 h1,
 .h1 {
   font-size: 1.5em;
-  padding-top: .5em;
+  padding-top: 0.5em;
 }
 
 @media (min-width: 40em) {
@@ -748,21 +753,6 @@ h1,
   .h1 {
     font-size: 1.75em;
   }
-}
-
-h2,
-.h2 {
-  font-size: 1.3125em;
-}
-
-h3,
-.h3 {
-  font-size: 1.1875em;
-}
-
-h4, h5, h6,
-.h4, .h5, .h6 {
-  font-size: 1em;
 }
 
 h4,
@@ -773,120 +763,12 @@ h4,
 /**
  * Lines, Quotes and Emphasis
  */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  border: 0;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 0 solid transparent;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  /* 1 */
-  margin: 2em auto;
-  overflow: visible;
-  /* 2 */
-}
-
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-b,
 strong {
   font-weight: inherit;
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
 strong {
   font-weight: bolder;
-}
-
-/**
- * 1. Remove the bottom border in Firefox 39-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none;
-  /* 1 */
-  text-decoration: underline;
-  /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
-  /* 2 */
-}
-
-/**
- * Address styling not present in Safari and Chrome.
- */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Address styling not present in IE 8/9.
- */
-mark {
-  background: #fbf9c9;
-  color: #272727;
-}
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-/**
- * Blockquotes
- */
-blockquote {
-  font-size: 1.1875em;
-  font-style: italic;
-  margin: 0 0 1.5625em;
-  padding-left: 0.8421052632em;
-  padding-right: 0.8421052632em;
-}
-
-blockquote cite {
-  color: #808080;
-  font-size: 0.8421052632em;
-  padding-top: 1em;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
 }
 
 /**
@@ -938,8 +820,8 @@ pre code {
  * Primary buttons
  */
 .btn {
-  background-color: #0088cc;
-  border: 1px solid #0088cc;
+  background-color: #a53737;
+  border: 1px solid #a53737;
   color: #ffffff;
   display: inline-block;
   font-size: 0.9375em;
@@ -953,23 +835,10 @@ pre code {
 }
 
 .btn:hover, .btn:active, .btn.active {
-  background-color: #005580;
-  border-color: #005580;
+  background-color: #ca5f5f;
+  border-color: #ca5f5f;
   color: #ffffff;
   text-decoration: none;
-}
-
-/**
- * Secondary buttons
- */
-.btn-secondary {
-  background-color: #808080;
-  border-color: #808080;
-}
-
-.btn-secondary:hover, .btn-secondary:active, .btn-secondary.active {
-  background-color: #5a5a5a;
-  border-color: #5a5a5a;
 }
 
 /**
@@ -1006,9 +875,9 @@ pre code {
  * Block-level buttons
  */
 .btn-block,
-input[type="submit"].btn-block,
-input[type="reset"].btn-block,
-input[type="button"].btn-block {
+input[type='submit'].btn-block,
+input[type='reset'].btn-block,
+input[type='button'].btn-block {
   display: block;
   margin-right: 0;
   padding-right: 0;
@@ -1021,9 +890,9 @@ input[type="button"].btn-block {
  */
 .btn,
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
@@ -1335,13 +1204,32 @@ td {
   padding: 0.25em;
 }
 
-.freewriting-toolbar {
-  width: 100%;
-  margin: 20px 0 0;
-  -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background-color: #ddd;
-  padding: 20px;
+.freewriting-app .freewriting-toolbar {
+  -webkit-box-shadow: 0 4px 6px rgba(51, 51, 51, 0.15);
+          box-shadow: 0 4px 6px rgba(51, 51, 51, 0.15);
+}
+
+.freewriting-app h4 {
+  font-size: 0.8em;
+}
+
+.freewriting-app #timer {
+  font-size: 2.2em;
+}
+
+.freewriting-app textarea {
+  border: none;
+  margin-top: 20px;
+  height: 200vh;
+}
+
+.freewriting-app textarea:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header {
+  background-color: #f4e7d3;
 }
 
 /**
