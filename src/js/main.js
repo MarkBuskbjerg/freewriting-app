@@ -154,14 +154,18 @@ var initiator = function(e) {
     var display = document.getElementById('timer');
     freewriting.startTimer(workPeriodInSeconds, display);
     freewriting.typeWatcher(textarea, 2000);
-
     // Just make sure, that script doesn't trigger on these keys
     textarea.onkeydown = function(e) {
-      if (
-        e.keyCode == 8 ||
+      if (e.keyCode == 8) {
+        console.log(e.keyCode);
+        e.preventDefault();
+      } else if (
         e.keyCode == 37 ||
         e.keyCode == 38 ||
         e.keyCode == 39 ||
+        e.keyCode == 16 ||
+        e.keyCode == 17 ||
+        e.keyCode == 18 ||
         e.keyCode == 40 ||
         e.keyCode == 46 ||
         (e.ctrlKey && e.keyCode === 65) ||
